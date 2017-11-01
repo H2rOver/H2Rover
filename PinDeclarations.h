@@ -12,14 +12,14 @@
 //No declaring
 
 //Left Motors
-const int enA = 10;
-const int inA1 = 8;
-const int inA2 = 7;
+const int MOTOR_SPEED_LEFT = 10;
+const int MOTOR_ENABLE_LEFT_FRONT = 8;
+const int MOTOR_ENABLE_LEFT_BACK = 7;
 
-//Right Motos
-const int enB = 9;
-const int inB1 = 6;
-const int inB2 = 5;
+//Right Motors
+const int MOTOR_SPEED_RIGHT = 9;
+const int MOTOR_ENABLE_RIGHT_FRONT = 6;
+const int MOTOR_ENABLE_RIGHT_BACK = 5;
 
 //feelers
 const int LEFT_FEELER = 12;

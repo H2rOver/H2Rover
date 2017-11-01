@@ -1,70 +1,70 @@
 #include "MotorControl.h"
 
 MotorControl::MotorControl() {
-    pinMode(enA, OUTPUT);
-    pinMode(enB, OUTPUT);
-    pinMode(inA1, OUTPUT);
-    pinMode(inA2, OUTPUT);
-    pinMode(inB1, OUTPUT);
-    pinMode(inB2, OUTPUT);
+    pinMode(MOTOR_SPEED_LEFT, OUTPUT);
+    pinMode(MOTOR_SPEED_RIGHT, OUTPUT);
+    pinMode(MOTOR_ENABLE_LEFT_FRONT, OUTPUT);
+    pinMode(MOTOR_ENABLE_LEFT_BACK, OUTPUT);
+    pinMode(MOTOR_ENABLE_RIGHT_FRONT, OUTPUT);
+    pinMode(MOTOR_ENABLE_RIGHT_BACK, OUTPUT);
 }
 
 void MotorControl::motorOff() {
-    digitalWrite(inA1, LOW);
-    digitalWrite(inA2, LOW);
-    digitalWrite(inB1, LOW);
-    digitalWrite(inB2, LOW);
-    analogWrite(enB, 0);
-    analogWrite(enA, 0);
+    digitalWrite(MOTOR_ENABLE_LEFT_FRONT, LOW);
+    digitalWrite(MOTOR_ENABLE_LEFT_BACK, LOW);
+    digitalWrite(MOTOR_ENABLE_RIGHT_FRONT, LOW);
+    digitalWrite(MOTOR_ENABLE_RIGHT_BACK, LOW);
+    analogWrite(MOTOR_SPEED_RIGHT, 0);
+    analogWrite(MOTOR_SPEED_LEFT, 0);
 }
 
 void MotorControl::motorForward(int speed) {
     // turn on motor side A
-    digitalWrite(inA1, HIGH);
-    digitalWrite(inA2, LOW);
+    digitalWrite(MOTOR_ENABLE_LEFT_FRONT, HIGH);
+    digitalWrite(MOTOR_ENABLE_LEFT_BACK, LOW);
     // turn on motor side B
-    digitalWrite(inB1, HIGH);
-    digitalWrite(inB2, LOW);
+    digitalWrite(MOTOR_ENABLE_RIGHT_FRONT, HIGH);
+    digitalWrite(MOTOR_ENABLE_RIGHT_BACK, LOW);
     // set pwm to 'speed' out of possible range 0~255
-    analogWrite(enA, speed);
-    analogWrite(enB, speed);
+    analogWrite(MOTOR_SPEED_LEFT, speed);
+    analogWrite(MOTOR_SPEED_RIGHT, speed);
 }
 
 void MotorControl::motorBackward(int speed) {
-    // turn on motor side A
-    digitalWrite(inA1, LOW);
-    digitalWrite(inA2, HIGH);
+    // turn on motor side Left
+    digitalWrite(MOTOR_ENABLE_LEFT_FRONT, LOW);
+    digitalWrite(MOTOR_ENABLE_LEFT_BACK, HIGH);
     // set pwm to 'speed' out of possible range 0~255
-    analogWrite(enA, speed);
+    analogWrite(MOTOR_SPEED_LEFT, speed);
     // turn on motor side B
-    digitalWrite(inB1, LOW);
-    digitalWrite(inB2, HIGH);
+    digitalWrite(MOTOR_ENABLE_RIGHT_FRONT, LOW);
+    digitalWrite(MOTOR_ENABLE_RIGHT_BACK, HIGH);
     // set pwm to 'speed' out of possible range 0~255
-    analogWrite(enB, speed);
+    analogWrite(MOTOR_SPEED_RIGHT, speed);
 }
 
 void MotorControl::motorLeft(int speed) {
-    // turn on motor side A
-    digitalWrite(inA1, LOW);
-    digitalWrite(inA2, HIGH);
+    // turn on motor side Left
+    digitalWrite(MOTOR_ENABLE_LEFT_FRONT, LOW);
+    digitalWrite(MOTOR_ENABLE_LEFT_BACK, HIGH);
     // set pwm to 'speed' out of possible range 0~255
-    analogWrite(enA, speed);
-    // turn on motor side B
-    digitalWrite(inB1, HIGH);
-    digitalWrite(inB2, LOW);
+    analogWrite(MOTOR_SPEED_LEFT, speed);
+    // turn on motor side right
+    digitalWrite(MOTOR_ENABLE_RIGHT_FRONT, HIGH);
+    digitalWrite(MOTOR_ENABLE_RIGHT_BACK, LOW);
     // set pwm to 'speed' out of possible range 0~255
-    analogWrite(enB, speed);
+    analogWrite(MOTOR_SPEED_RIGHT, speed);
 }
 
 void MotorControl::motorRight(int speed) {
-    // turn on motor side A
-    digitalWrite(inA1, HIGH);
-    digitalWrite(inA2, LOW);
+    // turn on motor side Left
+    digitalWrite(MOTOR_ENABLE_LEFT_FRONT, HIGH);
+    digitalWrite(MOTOR_ENABLE_LEFT_BACK, LOW);
     // set pwm to 'speed' out of possible range 0~255
-    analogWrite(enA, speed);
-    // turn on motor side B
-    digitalWrite(inB1, LOW);
-    digitalWrite(inB2, HIGH);
+    analogWrite(MOTOR_SPEED_LEFT, speed);
+    // turn on motor side Right
+    digitalWrite(MOTOR_ENABLE_RIGHT_FRONT, LOW);
+    digitalWrite(MOTOR_ENABLE_RIGHT_BACK, HIGH);
     // set pwm to 'speed' out of possible range 0~255
-    analogWrite(enB, speed);
+    analogWrite(MOTOR_SPEED_RIGHT, speed);
 }
