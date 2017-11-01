@@ -21,4 +21,8 @@ const int enB = 9;
 const int inB1 = 6;
 const int inB2 = 5;
 
+//feelers
+const int LEFT_FEELER = 12;
+const int RIGHT_FEELER = 13;
+
 #endif //H2ROVER_PINDECLARATIONS_H
