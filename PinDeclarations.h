@@ -8,6 +8,9 @@
 //Import to allow arduino commands 
 #include <Arduino.h>
 
+//List all pins used here
+//No declaring
+
 //Left Motors
 const int enA = 10;
 const int inA1 = 8;
