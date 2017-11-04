@@ -17,8 +17,9 @@
 class IMU {
 public:
     //ID is the unique sensor ID associated with this sensor
-    IMU(int id);
+    IMU();
     ~IMU();
+    void initialize(int id);
     sensor_t getSensor();
     //Populates int array where:
     // array[0] = system status

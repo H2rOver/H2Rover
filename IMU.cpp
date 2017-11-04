@@ -11,7 +11,15 @@
 // Created by DanielB on 11/3/2017.
 //
 
-IMU::IMU(int id) {
+IMU::IMU() {}
+
+IMU::~IMU() {}
+
+sensor_t IMU::getSensor() {
+    return this->sensor;
+}
+
+void IMU::initialize(int id) {
     //Initialize IMU with id number
     this->bno = Adafruit_BNO055(id);
 
@@ -34,12 +42,6 @@ IMU::IMU(int id) {
         Serial.print("Please move the sensor slightly");
         delay(10);
     }
-}
-
-IMU::~IMU() {}
-
-sensor_t IMU::getSensor() {
-    return this->sensor;
 }
 
 void IMU::getSystemStatus(uint8_t* array) {
