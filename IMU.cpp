@@ -42,11 +42,11 @@ sensor_t IMU::getSensor() {
     return this->sensor;
 }
 
-void IMU::getSystemStatus(uint_8* array) {
+void IMU::getSystemStatus(uint8_t* array) {
     this->bno.getSystemStatus(array[0], array[1], array[2]);
 }
 
-void IMU::getXYZ(uint_8* array) {
+void IMU::getXYZ(uint8_t* array) {
     sensors_event_t event;
     this->bno.getEvent(&event);
     array[0] = event.orientation.x;

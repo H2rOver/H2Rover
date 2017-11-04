@@ -24,12 +24,12 @@ public:
     // array[0] = system status
     // array[1] = system test results
     // array[2] = system error
-    void getSystemStatus(uint_8* array);
+    void getSystemStatus(uint8_t* array);
     //Populates int array where:
     // array[0] = X heading
     // array[1] = Y heading
     // array[2] = Z heading
-    void getXYZ(uint_8* array);
+    void getXYZ(uint8_t* array);
 
 private:
     Adafruit_BNO055 bno;
