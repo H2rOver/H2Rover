@@ -8,6 +8,9 @@
 #ifndef H2ROVER_IMU_H
 #define H2ROVER_IMU_H
 
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BNO055.h>
+
 
 //This sensor follows the Adafruit Unified Sensor Library Conventions
 class IMU {
