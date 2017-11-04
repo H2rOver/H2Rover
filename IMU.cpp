@@ -43,7 +43,7 @@ sensor_t IMU::getSensor() {
 }
 
 void IMU::getSystemStatus(uint8_t* array) {
-    this->bno.getSystemStatus(array[0], array[1], array[2]);
+    this->bno.getSystemStatus(&array[0], &array[1], &array[2]);
 }
 
 void IMU::getXYZ(uint8_t* array) {
