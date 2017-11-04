@@ -16,8 +16,8 @@ IMU::IMU(int id) {
     this->bno = Adafruit_BNO055(id);
 
     //Check that bno is present in current system
-    if(!this->bno.begin){
-        Serial.print("No BNO055 detected")
+    if(!this->bno.begin()){
+        Serial.print("No BNO055 detected");
         while(1);
     }
 
@@ -43,7 +43,7 @@ sensor_t IMU::getSensor() {
 }
 
 void IMU::getSystemStatus(int* array) {
-    this->bno.getSystemStatus(&array[0], &array[1], &array[2]);
+    this->bno.getSystemStatus(array[0], array[1], array[2]);
 }
 
 void IMU::getXYZ(int *array) {
