@@ -1,5 +1,8 @@
 //
-// Created by DanielB on 10/25/2017.
+// Created by: Daniel Benusovich
+// Created on: 10/25/2017
+// Last edited By: Daniel Benusovich
+// Last edited bn: 11/1/2017
 //
 
 #ifndef H2ROVER_PINDECLARATIONS_H

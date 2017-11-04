@@ -1,3 +1,10 @@
+//
+// Created by: Daniel Benusovich
+// Created on: 10/25/2017
+// Last edited By: Daniel Benusovich
+// Last edited bn: 11/1/2017
+//
+
 #include "MotorControl.h"
 
 MotorControl::MotorControl() {
