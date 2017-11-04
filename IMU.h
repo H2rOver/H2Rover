@@ -8,6 +8,7 @@
 #ifndef H2ROVER_IMU_H
 #define H2ROVER_IMU_H
 
+#include "PinDeclarations.h"
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
 
@@ -23,12 +24,12 @@ public:
     // array[0] = system status
     // array[1] = system test results
     // array[2] = system error
-    void getSystemStatus(int* array);
+    void getSystemStatus(uint_8* array);
     //Populates int array where:
     // array[0] = X heading
     // array[1] = Y heading
     // array[2] = Z heading
-    void getXYZ(int* array);
+    void getXYZ(uint_8* array);
 
 private:
     Adafruit_BNO055 bno;
