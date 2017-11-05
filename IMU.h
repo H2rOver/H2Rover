@@ -25,7 +25,7 @@ public:
     // array[0] = system status
     // array[1] = system test results
     // array[2] = system error
-    void getSystemStatus(uint16_t* array);
+    void getSystemStatus(uint8_t* array);
     //Populates int array where:
     // array[0] = X heading
     // array[1] = Y heading

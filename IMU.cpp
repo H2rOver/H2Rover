@@ -44,7 +44,7 @@ void IMU::initialize(int id) {
     }
 }
 
-void IMU::getSystemStatus(uint16_t* array) {
+void IMU::getSystemStatus(uint8_t* array) {
     this->bno.getSystemStatus(&array[0], &array[1], &array[2]);
 }
 
