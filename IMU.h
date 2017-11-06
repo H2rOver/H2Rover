@@ -9,6 +9,8 @@
 #define H2ROVER_IMU_H
 
 #include "PinDeclarations.h"
+#include "MotorControl.h"
+#include <stdlib.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
 

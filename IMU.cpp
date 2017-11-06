@@ -5,7 +5,9 @@
 // Last edited bn: 11/3/2017
 //
 
+#include <cstdint>
 #include "IMU.h"
+
 
 //
 // Created by DanielB on 11/3/2017.
@@ -40,6 +42,10 @@ void IMU::initialize(int id) {
 
     while(!this->bno.isFullyCalibrated()){
         Serial.print("Please move the sensor slightly");
+        MotorControl temp;
+        temp.motorRight(50);
+        delay(1000);
+        temp.motorOff();
         delay(10);
     }
 }
@@ -51,7 +57,7 @@ void IMU::getSystemStatus(uint8_t* array) {
 void IMU::getXYZ(uint16_t* array) {
     sensors_event_t event;
     this->bno.getEvent(&event);
-    array[0] = event.orientation.x;
-    array[1] = event.orientation.y;
-    array[2] = event.orientation.z;
+    array[0] = (uint16_t) abs(event.orientation.x);
+    array[1] = (uint16_t) abs(event.orientation.y);
+    array[2] = (uint16_t) abs(event.orientation.z);
 }
