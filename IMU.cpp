@@ -57,7 +57,7 @@ void IMU::getSystemStatus(uint8_t* array) {
 void IMU::getXYZ(uint16_t* array) {
     sensors_event_t event;
     this->bno.getEvent(&event);
-    array[0] = (uint16_t) abs(event.orientation.x);
-    array[1] = (uint16_t) abs(event.orientation.y);
-    array[2] = (uint16_t) abs(event.orientation.z);
+    array[0] = abs(event.orientation.x);
+    array[1] = abs(event.orientation.y);
+    array[2] = abs(event.orientation.z);
 }
