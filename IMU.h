@@ -31,7 +31,7 @@ public:
     // array[0] = X heading
     // array[1] = Y heading
     // array[2] = Z heading
-    void getXYZ(uint16_t* array);
+    void getXYZ(int16_t* array);
 
 private:
     Adafruit_BNO055 bno;
