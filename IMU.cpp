@@ -5,7 +5,6 @@
 // Last edited bn: 11/3/2017
 //
 
-#include <cstdint>
 #include "IMU.h"
 
 
