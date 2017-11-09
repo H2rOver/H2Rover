@@ -37,11 +37,11 @@ const int MOISTURE_INPUT = A7;//Nano
 
 //Proximity Sensor
 const int ULTRASOUND_TRIGGER = 11;
-const int ULTRASOUND_ECHO = 3;
+const int ULTRASOUND_ECHO = 4;
 
 //XBee
-const int XBEE_TX = 1;
-const int XBEE_RX = 0;
+const int XBEE_TX = 1; //TX
+const int XBEE_RX = 0; //RX
 
 //Water Sensor
 const int WATER_INPUT = A6;//Nano
@@ -50,7 +50,7 @@ const int WATER_INPUT = A6;//Nano
 const int BATTERY_VOLTAGE = A3;//Nano
 
 //Temperature Sensor
-const int TEMPERATURE_INPUT = 17;
+const int TEMPERATURE_INPUT = A0;
 
 //GPS
 const int GPS_RX = 2;
@@ -61,8 +61,7 @@ const int IMU_SDA = A4;
 const int IMU_SCL = A5;
 
 //Rack and Pinion Motor
-const int MOTOR_MOISTURE_UP = 13;
-const int MOTOR_MOISTURE_DOWN_AND_MOISTURE_VOLTAGE = 4;
+const int MOTOR_MOISTURE_PWM = 3;
 
 //Encoder
 const int ENCODER_FRONT_LEFT_INC = A2;

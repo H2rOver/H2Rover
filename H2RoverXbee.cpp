@@ -24,6 +24,9 @@ H2RoverXbee::H2RoverXbee(int xbee_device_type) {
     this->rx = ZBRxResponse();
     this->msr = ModemStatusResponse();
 
+    //Default values for packet
+    packet = 0;
+
 }
 
 H2RoverXbee::~H2RoverXbee() {}
@@ -64,7 +67,9 @@ int H2RoverXbee::getPacket(uint8_t *receive_data_array) {
             }
 
             //Process packet
-
+            if (packet == 0){
+                packet = new uint*_t[this->xbee.getPacketLength()]
+            }
         }
 
     //Error in receiving packet

@@ -33,7 +33,7 @@ private:
 	const int RECEIVED_RX_PACKET = 2;
 	const int RECIEVED_PACKET_ACK = 3;
 
-    uint8_t
+    uint8_t* packet;
 	uint64_t macAddress;
 	HardwareSerial* xbeeSerial;
 	Xbee xbee;
