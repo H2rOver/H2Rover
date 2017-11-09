@@ -14,6 +14,10 @@ class H2RoverXbee {
 public:
     //Constant for maximum packet size
     static const int MAXIMUM_PACKET_SIZE = 10;
+	static const int NO_RESPONSE = -2;
+	static const int INDETERMINATE = -1;
+	static const int RECEIVED_RX_PACKET = 1;
+	static const int RECIEVED_PACKET_ACK = 0;
 
     H2RoverXbee(int xbee_device_type);
     ~H2RoverXbee();
@@ -33,10 +37,7 @@ private:
 	const int TX_SUCCESS = 1;
 
 	//constants for receiving packets
-	const int NO_RESPONSE = -2;
-	const int INDETERMINATE = -1;
-	const int RECEIVED_RX_PACKET = 1;
-	const int RECIEVED_PACKET_ACK = 0;
+
 
 
 
