@@ -28,14 +28,15 @@ private:
 	const int TX_SUCCESS = 1;
 
 	//constants for receiving packets
-	const int NO_RESPONSE = -1;
-	const int INDETERMINATE = 0;
-	const int RECEIVED_RX_PACKET = 2;
-	const int RECIEVED_PACKET_ACK = 3;
+	const int NO_RESPONSE = -2;
+	const int INDETERMINATE = -1;
+	const int RECEIVED_RX_PACKET = 1;
+	const int RECIEVED_PACKET_ACK = 0;
 
-    uint8_t* packet;
+	//Constant for maximum packet size
+	const int MAXIMUM_PACKET_SIZE = 10;
+
 	uint64_t macAddress;
-	HardwareSerial* xbeeSerial;
 	Xbee xbee;
 	XBeeAddress64 addr64;
 	ZBTxRequest tx;
