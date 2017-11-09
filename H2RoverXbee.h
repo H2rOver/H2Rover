@@ -14,8 +14,8 @@ class H2RoverXbee {
 public:
     H2RoverXbee(int xbee_device_type);
     ~H2RoverXbee();
-	int sendPacket(uint8_t* send_data_array);
-	int getPacket(uint8_t* receive_data_array);
+	int sendPacket(uint8_t* send_data_array[MAXIMUM_PACKET_SIZE]);
+	int getPacket(uint8_t* receive_data_array[MAXIMUM_PACKET_SIZE]);
 	void initialize();
 
 	//Constant for maximum packet size

@@ -44,7 +44,7 @@ int H2RoverXbee::sendPacket(uint8_t* send_data_array[MAXIMUM_PACKET_SIZE]) {
 
 //Receive data from ENDDEVICE
 //Populates array whose pointer is passed
-int H2RoverXbee::getPacket(uint8_t *receive_data_array) {
+int H2RoverXbee::getPacket(uint8_t* receive_data_array[MAXIMUM_PACKET_SIZE]) {
     int packetStatus = INDETERMINATE;
     /*** begin xbee code ***/
     this->xbee.readPacket();
