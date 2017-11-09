@@ -37,7 +37,7 @@ private:
 	const int MAXIMUM_PACKET_SIZE = 10;
 
 	uint64_t macAddress;
-	Xbee xbee;
+	XBee xbee;
 	XBeeAddress64 addr64;
 	ZBTxRequest tx;
 	XBeeResponse response;

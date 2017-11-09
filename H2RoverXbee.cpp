@@ -9,7 +9,7 @@
 
 H2RoverXbee::H2RoverXbee(int xbee_device_type) {
 
-    this->xbee = Xbee();
+    this->xbee = XBee();
 
 
     if (xbee_device_type == COORDINATOR) {
