@@ -37,7 +37,7 @@ void H2RoverXbee::initialize() {
 //Pass array pointer to data to send
 int H2RoverXbee::sendPacket(uint8_t send_data_array[MAXIMUM_PACKET_SIZE]) {
     for (int i = 0; i < MAXIMUM_PACKET_SIZE; i++) {
-        Serial.print(send_data_array[i]);
+        Serial.print(sizeof(send_data_array));
     }
     this->tx = ZBTxRequest(this->macAddress, send_data_array, sizeof(send_data_array)); // 64-bit addressing, packet, and packet length
     this->xbee.send(this->tx); // send packet to remote radio
