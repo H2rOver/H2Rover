@@ -29,7 +29,7 @@ H2RoverXbee::H2RoverXbee(int xbee_device_type) {
 H2RoverXbee::~H2RoverXbee() {}
 
 //Xbee will recieve data and push data on Serial
-H2RoverXbee::initialize() {
+void H2RoverXbee::initialize() {
     this->xbee.setSerial(Serial);
 }
 
@@ -58,13 +58,13 @@ int H2RoverXbee::getPacket(uint8_t *receive_data_array) {
             packetStatus = RECEIVED_RX_PACKET;
 
             //Verify Reception
-            if (this->xbee.getOption() == ZB_PACKET_ACKNOWLEDGED) {
+            if (this->rx.getOption() == ZB_PACKET_ACKNOWLEDGED) {
                 packetStatus = RECIEVED_PACKET_ACK;
             }
 
             //Process packet and assign it to passed in array
             for (int i = 0; i < MAXIMUM_PACKET_SIZE; i++) {
-                receive_data_array[i] = this->xbee.getData()[i];
+                receive_data_array[i] = this->rx.getData()[i];
             }
         }
 
