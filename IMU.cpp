@@ -45,7 +45,7 @@ void IMU::initialize(int id) {
         temp.motorRight(150);
         delay(1000);
         temp.motorOff();
-        delay(10);
+        delay(1000);
     }
 }
 
