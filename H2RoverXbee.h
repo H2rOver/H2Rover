@@ -19,7 +19,7 @@ public:
 	void initialize();
 
 	//Constant for maximum packet size
-	const int MAXIMUM_PACKET_SIZE = 10;
+	static const int MAXIMUM_PACKET_SIZE = 10;
 
 private:
 
