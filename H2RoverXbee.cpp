@@ -65,6 +65,7 @@ int H2RoverXbee::getPacket(uint8_t receive_data_array[MAXIMUM_PACKET_SIZE]) {
             //Process packet and assign it to passed in array
             for (int i = 0; i < MAXIMUM_PACKET_SIZE; i++) {
                 receive_data_array[i] = this->rx.getData()[i];
+                Serial.println(this->rx.getData()[i]);
             }
         }
 
