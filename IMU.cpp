@@ -38,10 +38,10 @@ void IMU::initialize(int id) {
 
     //Enable IMU operation
     this->bno.setExtCrystalUse(true);
-
+    MotorControl temp;
     while(!this->bno.isFullyCalibrated()){
         Serial.print("Please move the sensor slightly");
-        MotorControl temp;
+
         temp.motorRight(150);
         delay(1000);
         temp.motorOff();
