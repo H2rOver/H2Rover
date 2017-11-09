@@ -18,6 +18,9 @@ public:
 	int getPacket(uint8_t* receive_data_array);
 	void initialize();
 
+	//Constant for maximum packet size
+	const int MAXIMUM_PACKET_SIZE = 10;
+	
 private:
 
 	//xbee type correspond to Mac Address
@@ -33,8 +36,7 @@ private:
 	const int RECEIVED_RX_PACKET = 1;
 	const int RECIEVED_PACKET_ACK = 0;
 
-	//Constant for maximum packet size
-	const int MAXIMUM_PACKET_SIZE = 10;
+
 
 	uint64_t macAddress;
 	XBee xbee;
