@@ -20,7 +20,7 @@ public:
 
 	//Constant for maximum packet size
 	const int MAXIMUM_PACKET_SIZE = 10;
-	
+
 private:
 
 	//xbee type correspond to Mac Address
