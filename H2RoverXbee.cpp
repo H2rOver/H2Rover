@@ -4,6 +4,7 @@
 // Last edited bn: 11/8/2017
 //
 
+#include <cstdint>
 #include "H2RoverXbee.h"
 
 
@@ -36,8 +37,9 @@ void H2RoverXbee::initialize() {
 //Sends data to the ENDDEVICE
 //Pass array pointer to data to send
 int H2RoverXbee::sendPacket(uint8_t send_data_array[MAXIMUM_PACKET_SIZE]) {
+    uint8_t payload[MAXIMUM_PACKET_SIZE];
     for (int i = 0; i < MAXIMUM_PACKET_SIZE; i++) {
-        Serial.print(sizeof(send_data_array));
+        payload[i] = send_data_array[i];
     }
     this->tx = ZBTxRequest(this->macAddress, send_data_array, sizeof(send_data_array)); // 64-bit addressing, packet, and packet length
     this->xbee.send(this->tx); // send packet to remote radio
