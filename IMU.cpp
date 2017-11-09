@@ -42,7 +42,7 @@ void IMU::initialize(int id) {
     while(!this->bno.isFullyCalibrated()){
         Serial.print("Please move the sensor slightly");
         MotorControl temp;
-        temp.motorRight(50);
+        temp.motorRight(150);
         delay(1000);
         temp.motorOff();
         delay(10);
