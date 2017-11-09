@@ -33,8 +33,7 @@ const int FEELER = 12;
 //Moisture Sensor
 //We combine Voltage_pin and motor_direction for the rack and pinion motor due to a lack of pins
 //We may combine the pins because the moisture sensor will only be on when we lower the motor
-//const int VOLTAGE_PIN = 4;
-const int MOISTURE_INPUT = 14;
+const int MOISTURE_INPUT = A7;//Nano
 
 //Proximity Sensor
 const int ULTRASOUND_TRIGGER = 11;
@@ -45,24 +44,28 @@ const int XBEE_TX = 1;
 const int XBEE_RX = 0;
 
 //Water Sensor
-const int WATER_INPUT = 15;
+const int WATER_INPUT = A6;//Nano
 
 //Battery Voltage
-const int BATTERY_VOLTAGE = 16;
+const int BATTERY_VOLTAGE = A3;//Nano
 
 //Temperature Sensor
 const int TEMPERATURE_INPUT = 17;
 
 //GPS
 const int GPS_RX = 2;
-const int GPS_TX = 17;
+const int GPS_TX = 13;
 
 //IMU
-const int IMU_SDA = 18;
-const int IMU_SCL = 19;
+const int IMU_SDA = A4;
+const int IMU_SCL = A5;
 
 //Rack and Pinion Motor
 const int MOTOR_MOISTURE_UP = 13;
 const int MOTOR_MOISTURE_DOWN_AND_MOISTURE_VOLTAGE = 4;
+
+//Encoder
+const int ENCODER_FRONT_LEFT_INC = A2;
+const int ENCODER_FRONT_LEFT_DEC = A1;
 
 #endif //H2ROVER_PINDECLARATIONS_H

@@ -10,27 +10,30 @@
 #include "PinDeclarations.h"
 #include <XBee.h>
 
-class H2Xbee {
+class H2RoverXbee {
 public:
-    H2Xbee(int xbee_device_type);
-    ~H2Xbee();
-	int send_data(uint8_t* send_data_array);
-	int receive_data(uint8_t* receive_data_array);
-	void initialize(HardwareSerial* serial);
+    H2RoverXbee(int xbee_device_type);
+    ~H2RoverXbee();
+	int sendPacket(uint8_t* send_data_array);
+	int getPacket(uint8_t* receive_data_array);
+	void initialize();
 
 private:
+
 	//xbee type correspond to Mac Address
 	const int COORDINATOR = 0;
 	const int ENDDEVICE = 1;
-	//constants for tx
+
+	//constants for transmission
 	const int TX_SUCCESS = 1;
-	//constants for rx
+
+	//constants for receiving packets
 	const int NO_RESPONSE = -1;
 	const int INDETERMINATE = 0;
-	const int RECEIVED_SOMETHING = 1;
 	const int RECEIVED_RX_PACKET = 2;
-	const int RECIEVED_RX_PACKET_AND_SENDER_ACK = 3;
-	
+	const int RECIEVED_PACKET_ACK = 3;
+
+    uint8_t
 	uint64_t macAddress;
 	HardwareSerial* xbeeSerial;
 	Xbee xbee;
