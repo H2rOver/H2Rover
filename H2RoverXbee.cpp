@@ -36,6 +36,7 @@ void H2RoverXbee::initialize() {
 //Sends data to the ENDDEVICE
 //Pass array pointer to data to send
 int H2RoverXbee::sendPacket(uint8_t send_data_array[MAXIMUM_PACKET_SIZE]) {
+    //TODO clean up this code
     uint8_t payload[MAXIMUM_PACKET_SIZE];
     for (int i = 0; i < MAXIMUM_PACKET_SIZE; i++) {
         payload[i] = send_data_array[i];
@@ -60,6 +61,8 @@ int H2RoverXbee::getPacket(uint8_t receive_data_array[MAXIMUM_PACKET_SIZE]) {
         //Constant from XBee.h include
         if (this->xbee.getResponse().getApiId() == ZB_RX_RESPONSE) {
             packetStatus = RECEIVED_RX_PACKET;
+            //Populate rx
+            this->xbee.getResponse().getZBRxResponse(this->rx);
 
             //Verify Reception
             if (this->rx.getOption() == ZB_PACKET_ACKNOWLEDGED) {
