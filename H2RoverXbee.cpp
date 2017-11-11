@@ -1,7 +1,7 @@
 // Created by: Scott Timpe
 // Created on: 11/5/2017
 // Last edited By: Daniel Benusovich
-// Last edited bn: 11/8/2017
+// Last edited bn: 11 November 2017
 //
 
 #include "H2RoverXbee.h"
@@ -28,7 +28,7 @@ H2RoverXbee::H2RoverXbee(int xbee_device_type) {
 
 H2RoverXbee::~H2RoverXbee() {}
 
-//Xbee will recieve data and push data on Serial
+//Xbee will receive data and push data on Serial
 void H2RoverXbee::initialize() {
     this->xbee.setSerial(Serial);
 }
@@ -36,11 +36,14 @@ void H2RoverXbee::initialize() {
 //Sends data to the ENDDEVICE
 //Pass array pointer to data to send
 int H2RoverXbee::sendPacket(uint8_t send_data_array[]) {
-    //TODO clean up this code
+
     uint8_t payload[send_data_array[0]];
+
+    //Assign send_data_array[1] to payload[0] etc
     for (int i = 0; i < send_data_array[0]; i++) {
-        payload[i] = send_data_array[i];
+        payload[i] = send_data_array[i + 1];
     }
+
     this->tx = ZBTxRequest(this->macAddress, payload, sizeof(payload)); // 64-bit addressing, packet, and packet length
     this->xbee.send(this->tx); // send packet to remote radio
 
@@ -50,7 +53,9 @@ int H2RoverXbee::sendPacket(uint8_t send_data_array[]) {
 //Receive data from ENDDEVICE
 //Populates array whose pointer is passed
 int H2RoverXbee::getPacket(uint8_t receive_data_array[]) {
+
     int packetStatus = INDETERMINATE;
+
     /*** begin xbee code ***/
     this->xbee.readPacket();
 
@@ -73,8 +78,8 @@ int H2RoverXbee::getPacket(uint8_t receive_data_array[]) {
             receive_data_array[0] = this->rx.getDataLength();
 
             //Process packet and assign it to passed in array
-            for (int i = 1; i < MAXIMUM_PACKET_SIZE; i++) {
-                receive_data_array[i] = this->rx.getData()[i];
+            for (int i = 0; i < receive_data_array[0]; i++) {
+                receive_data_array[i + 1] = this->rx.getData()[i];
             }
         }
 
@@ -91,6 +96,6 @@ uint8_t H2RoverXbee::getMaximumPacketSize() {
     return MAXIMUM_PACKET_SIZE;
 }
 
-void H2RoverXbee::setMacimumPacketSize(uint8_t maximumPacketSize) {
+void H2RoverXbee::setMaximumPacketSize(uint8_t maximumPacketSize) {
     this->MAXIMUM_PACKET_SIZE = maximumPacketSize;
 }

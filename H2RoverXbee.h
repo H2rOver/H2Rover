@@ -1,7 +1,7 @@
 // Created by: Scott Timpe
 // Created on: 11/5/2017
-// Last edited By: Scott Timpe
-// Last edited bn: 11/5/2017
+// Last edited By: Daniel Benusovich
+// Last edited bn: 11 November 2017
 //
 
 #ifndef H2ROVER_XBEE_H
