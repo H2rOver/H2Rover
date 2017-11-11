@@ -69,8 +69,11 @@ int H2RoverXbee::getPacket(uint8_t receive_data_array[MAXIMUM_PACKET_SIZE]) {
                 packetStatus = RECIEVED_PACKET_ACK;
             }
 
+            //Give packet length as first parameter in returned array
+            receive_data_array[0] = this->rx.getDataLength();
+
             //Process packet and assign it to passed in array
-            for (int i = 0; i < MAXIMUM_PACKET_SIZE; i++) {
+            for (int i = 1; i < MAXIMUM_PACKET_SIZE; i++) {
                 receive_data_array[i] = this->rx.getData()[i];
             }
         }
@@ -81,4 +84,13 @@ int H2RoverXbee::getPacket(uint8_t receive_data_array[MAXIMUM_PACKET_SIZE]) {
     }
 
     return packetStatus;
+}
+
+
+uint8_t H2RoverXbee::getMaximumPacketSize() {
+    return MAXIMUM_PACKET_SIZE;
+}
+
+void H2RoverXbee::setMacimumPacketSize(uint8_t maximumPacketSize) {
+    this->MAXIMUM_PACKET_SIZE = maximumPacketSize;
 }

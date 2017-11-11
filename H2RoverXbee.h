@@ -12,43 +12,51 @@
 
 class H2RoverXbee {
 public:
-    //Constant for maximum packet size
-    static const int MAXIMUM_PACKET_SIZE = 10;
+    //Int for maximum packet size
+    static uint8_t MAXIMUM_PACKET_SIZE = 10;
 
-	//TX packet constants
-	static const int NO_RESPONSE = -2;
-	static const int INDETERMINATE = -1;
-	static const int RECEIVED_RX_PACKET = 1;
-	static const int RECIEVED_PACKET_ACK = 0;
+    //TX packet constants
+    static const int NO_RESPONSE = -2;
+    static const int INDETERMINATE = -1;
+    static const int RECEIVED_RX_PACKET = 1;
+    static const int RECIEVED_PACKET_ACK = 0;
 
     H2RoverXbee(int xbee_device_type);
-    ~H2RoverXbee();
-	int sendPacket(uint8_t send_data_array[MAXIMUM_PACKET_SIZE]);
-	int getPacket(uint8_t receive_data_array[MAXIMUM_PACKET_SIZE]);
-	void initialize();
 
+    ~H2RoverXbee();
+
+    void initialize();
+
+    int sendPacket(uint8_t send_data_array[MAXIMUM_PACKET_SIZE]);
+
+    int getPacket(uint8_t receive_data_array[MAXIMUM_PACKET_SIZE]);
+
+    int getMaximumPacketSize();
+
+    void setMaximumPacketSize(uint8_t maximumPacketSize);
 
 
 private:
 
-	//xbee type correspond to Mac Address
-	const int COORDINATOR = 0;
-	const int ENDDEVICE = 1;
+    //xbee type correspond to Mac Address
+    const int COORDINATOR = 0;
+    const int ENDDEVICE = 1;
 
-	//constants for transmission
-	const int TX_SUCCESS = 1;
+    //constants for transmission
+    const int TX_SUCCESS = 1;
 
-	//constants for receiving packets
-
-
+    //constants for receiving packets
 
 
-	uint64_t macAddress;
-	XBee xbee;
-	XBeeAddress64 addr64;
-	ZBTxRequest tx;
-	XBeeResponse response;
-	ZBRxResponse rx;
-	ModemStatusResponse msr;
+
+
+    uint64_t macAddress;
+    XBee xbee;
+    XBeeAddress64 addr64;
+    ZBTxRequest tx;
+    XBeeResponse response;
+    ZBRxResponse rx;
+    ModemStatusResponse msr;
 };
+
 #endif //H2ROVER_XBEE_H
