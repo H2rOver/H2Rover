@@ -1,9 +1,11 @@
 //
 // Created by: Daniel Benusovich
 // Created on: 11/3/2017
-// Last edited By: Daniel Benusovich
-// Last edited bn: 11/3/2017
+// Last edited By: Scott Timpe
+// Last edited bn: 11/11/2017
 //
+// Edit notes:
+//		(11-11-2017) Added note about specifically which arduino library needs to be installed
 
 #ifndef H2ROVER_IMU_H
 #define H2ROVER_IMU_H
@@ -11,7 +13,7 @@
 #include "PinDeclarations.h"
 #include "MotorControl.h"
 #include <Adafruit_Sensor.h>
-#include <Adafruit_BNO055.h>
+#include <Adafruit_BNO055.h>	//need to install "Adafruit BNO055" library on arduino IDE
 
 
 //This sensor follows the Adafruit Unified Sensor Library Conventions
