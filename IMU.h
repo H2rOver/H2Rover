@@ -30,7 +30,7 @@ public:
      */
     void initialize(int id);
 
-    sensor_t getSensor();
+    void getSensor(sensor_t* sensor);
 
     //Populates uint8_t array where:
     // array[0] = system status
