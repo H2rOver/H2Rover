@@ -13,7 +13,7 @@
 class H2RoverXbee {
 public:
     //Int for maximum packet size
-    static uint8_t MAXIMUM_PACKET_SIZE = 10;
+    static uint8_t MAXIMUM_PACKET_SIZE;
 
     //TX packet constants
     static const int NO_RESPONSE = -2;
