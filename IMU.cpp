@@ -16,8 +16,9 @@ IMU::IMU() {}
 
 IMU::~IMU() {}
 
-sensor_t IMU::getSensor() {
-    return this->sensor;
+//Populates sensor object
+void IMU::getSensor(sensor_t* sensor) {
+    this->bno.getSensor(sensor);
 }
 
 void IMU::initialize(int id) {
@@ -29,9 +30,6 @@ void IMU::initialize(int id) {
         Serial.print("No BNO055 detected");
         while(1);
     }
-
-    //Initialize sensor reference
-    this->bno.getSensor(&sensor);
 
     //Set calibration offsets
     this->bno.setSensorOffsets(this->offsets);

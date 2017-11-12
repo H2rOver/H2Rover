@@ -1,13 +1,15 @@
 // Created by: Scott Timpe
 // Created on: 11/5/2017
 // Last edited By: Daniel Benusovich
-// Last edited bn: 11/8/2017
+// Last edited bn: 11 November 2017
 //
 
 #include "H2RoverXbee.h"
 
 
 H2RoverXbee::H2RoverXbee(int xbee_device_type) {
+
+    this->MAXIMUM_PACKET_SIZE = 10;
 
     this->xbee = XBee();
 
@@ -28,29 +30,34 @@ H2RoverXbee::H2RoverXbee(int xbee_device_type) {
 
 H2RoverXbee::~H2RoverXbee() {}
 
-//Xbee will recieve data and push data on Serial
+//Xbee will receive data and push data on Serial
 void H2RoverXbee::initialize() {
     this->xbee.setSerial(Serial);
 }
 
 //Sends data to the ENDDEVICE
 //Pass array pointer to data to send
-int H2RoverXbee::sendPacket(uint8_t send_data_array[MAXIMUM_PACKET_SIZE]) {
-    //TODO clean up this code
-    uint8_t payload[MAXIMUM_PACKET_SIZE];
-    for (int i = 0; i < MAXIMUM_PACKET_SIZE; i++) {
-        payload[i] = send_data_array[i];
+int H2RoverXbee::sendPacket(uint8_t send_data_array[]) {
+
+    uint8_t payload[send_data_array[0]];
+
+    //Assign send_data_array[1] to payload[0] etc
+    for (int i = 0; i < send_data_array[0]; i++) {
+        payload[i] = send_data_array[i + 1];
     }
+
     this->tx = ZBTxRequest(this->macAddress, payload, sizeof(payload)); // 64-bit addressing, packet, and packet length
     this->xbee.send(this->tx); // send packet to remote radio
 
-    return TX_SUCCESS;
+    return 0;
 }
 
 //Receive data from ENDDEVICE
 //Populates array whose pointer is passed
-int H2RoverXbee::getPacket(uint8_t receive_data_array[MAXIMUM_PACKET_SIZE]) {
+int H2RoverXbee::getPacket(uint8_t receive_data_array[]) {
+
     int packetStatus = INDETERMINATE;
+
     /*** begin xbee code ***/
     this->xbee.readPacket();
 
@@ -59,7 +66,7 @@ int H2RoverXbee::getPacket(uint8_t receive_data_array[MAXIMUM_PACKET_SIZE]) {
 
         //Packet Received
         //Constant from XBee.h include
-        if (this->xbee.getResponse().getApiId() == ZB_RX_RESPONSE) {
+    if (this->xbee.getResponse().getApiId() == ZB_RX_RESPONSE) {
             packetStatus = RECEIVED_RX_PACKET;
             //Populate rx
             this->xbee.getResponse().getZBRxResponse(this->rx);
@@ -69,9 +76,12 @@ int H2RoverXbee::getPacket(uint8_t receive_data_array[MAXIMUM_PACKET_SIZE]) {
                 packetStatus = RECIEVED_PACKET_ACK;
             }
 
+            //Give packet length as first parameter in returned array
+            receive_data_array[0] = this->rx.getDataLength();
+
             //Process packet and assign it to passed in array
-            for (int i = 0; i < MAXIMUM_PACKET_SIZE; i++) {
-                receive_data_array[i] = this->rx.getData()[i];
+            for (int i = 0; i < receive_data_array[0]; i++) {
+                receive_data_array[i + 1] = this->rx.getData()[i];
             }
         }
 
@@ -81,4 +91,13 @@ int H2RoverXbee::getPacket(uint8_t receive_data_array[MAXIMUM_PACKET_SIZE]) {
     }
 
     return packetStatus;
+}
+
+
+uint8_t H2RoverXbee::getMaximumPacketSize() {
+    return MAXIMUM_PACKET_SIZE;
+}
+
+void H2RoverXbee::setMaximumPacketSize(uint8_t maximumPacketSize) {
+    this->MAXIMUM_PACKET_SIZE = maximumPacketSize;
 }
