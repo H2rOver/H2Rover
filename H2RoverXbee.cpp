@@ -10,7 +10,7 @@
 H2RoverXbee::H2RoverXbee(int xbee_device_type) {
 
     this->MAXIMUM_PACKET_SIZE = 10;
-    
+
     this->xbee = XBee();
 
 

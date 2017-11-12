@@ -9,6 +9,7 @@
 
 #include "PinDeclarations.h"
 #include <XBee.h>
+#include <stdint-gcc.h>
 
 class H2RoverXbee {
 public:
@@ -49,7 +50,7 @@ public:
     int getPacket(uint8_t receive_data_array[]);
 
     //Returns the set packet size for the local XBee
-    int getMaximumPacketSize();
+    uint8_t getMaximumPacketSize();
 
     //Sets the packet size for the local XBee
     void setMaximumPacketSize(uint8_t maximumPacketSize);
