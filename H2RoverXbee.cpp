@@ -64,7 +64,7 @@ int H2RoverXbee::getPacket(uint8_t receive_data_array[]) {
 
         //Packet Received
         //Constant from XBee.h include
-        if (this->xbee.getResponse().getApiId() == ZB_RX_RESPONSE) {
+    if (this->xbee.getResponse().getApiId() == ZB_RX_RESPONSE) {
             packetStatus = RECEIVED_RX_PACKET;
             //Populate rx
             this->xbee.getResponse().getZBRxResponse(this->rx);

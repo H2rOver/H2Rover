@@ -46,7 +46,6 @@ public:
 
 private:
     Adafruit_BNO055 bno;
-    sensor_t sensor;
     //These values are predetermined through testing and will not change during operation
     //Calibration values correspond to:
     const adafruit_bno055_offsets_t offsets = {65522, 65455, 11, // Accelerometer X, Accelerometer Y, Accelerometer Z,
