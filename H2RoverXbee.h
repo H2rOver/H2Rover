@@ -3,6 +3,8 @@
 // Last edited By: Scott Timpe
 // Last edited bn: 11/11/2017
 //
+// Edit notes:
+//		(11-11-2017) Added note about specifically which arduino library needs to be installed
 
 #ifndef H2ROVER_XBEE_H
 #define H2ROVER_XBEE_H

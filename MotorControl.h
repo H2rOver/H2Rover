@@ -8,6 +8,8 @@ public:
     MotorControl();
     void motorOff();
     void motorForward(int speed);
+	void motorForwardRight(int speed);
+	void motorForwardLeft(int speed);
     void motorBackward(int speed);
     void motorRight(int speed);
     void motorLeft(int speed);

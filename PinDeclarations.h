@@ -1,9 +1,11 @@
 //
 // Created by: Daniel Benusovich
 // Created on: 10/25/2017
-// Last edited By: Daniel Benusovich
-// Last edited bn: 11/1/2017
+// Last edited By: Scott Timpe
+// Last edited bn: 11/11/2017
 //
+// Edit notes:
+// 		(11-11-2017) Moved FEELER to pin 2, GPS_RX to pin 12
 
 #ifndef H2ROVER_PINDECLARATIONS_H
 #define H2ROVER_PINDECLARATIONS_H
@@ -28,7 +30,7 @@ const int MOTOR_ENABLE_RIGHT_BACK = 5;
 
 //Feelers
 //We could use logic gates to incorporate multiple feelers
-const int FEELER = 12;
+const int FEELER = 2;
 
 //Moisture Sensor
 //We combine Voltage_pin and motor_direction for the rack and pinion motor due to a lack of pins
@@ -53,7 +55,7 @@ const int BATTERY_VOLTAGE = A3;//Nano
 const int TEMPERATURE_INPUT = A0;
 
 //GPS
-const int GPS_RX = 2;
+const int GPS_RX = 12;
 const int GPS_TX = 13;
 
 //IMU
