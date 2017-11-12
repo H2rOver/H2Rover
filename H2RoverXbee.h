@@ -1,14 +1,16 @@
 // Created by: Scott Timpe
 // Created on: 11/5/2017
 // Last edited By: Daniel Benusovich
-// Last edited bn: 11 November 2017
+// Last edited bn: 12 November 2017
 //
+// Edit notes:
+//		(11-11-2017) Added note about specifically which arduino library needs to be installed
 
 #ifndef H2ROVER_XBEE_H
 #define H2ROVER_XBEE_H
 
 #include "PinDeclarations.h"
-#include <XBee.h>
+#include <XBee.h>  //need to install "Xbee-Arduino library" on arduino
 
 class H2RoverXbee {
 public:
