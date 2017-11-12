@@ -9,12 +9,10 @@
 
 #include "PinDeclarations.h"
 #include <XBee.h>
-#include <stdint-gcc.h>
 
 class H2RoverXbee {
 public:
     //Int for maximum packet size
-    static uint8_t MAXIMUM_PACKET_SIZE;
 
     //TX packet constants
     static const int NO_RESPONSE = -2;
@@ -63,6 +61,7 @@ private:
     const int ENDDEVICE = 1;
 
     uint64_t macAddress;
+    uint8_t MAXIMUM_PACKET_SIZE;
     XBee xbee;
     XBeeAddress64 addr64;
     ZBTxRequest tx;
