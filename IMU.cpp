@@ -18,7 +18,7 @@ IMU::~IMU() {}
 
 //Populates sensor object
 void IMU::getSensor(sensor_t* sensor) {
-    return this->bno.getSensor(&sensor);
+    this->bno.getSensor(sensor);
 }
 
 void IMU::initialize(int id) {
