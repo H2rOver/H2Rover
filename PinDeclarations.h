@@ -2,10 +2,11 @@
 // Created by: Daniel Benusovich
 // Created on: 10/25/2017
 // Last edited By: Scott Timpe
-// Last edited bn: 11/11/2017
+// Last edited bn: 11/19/2017
 //
 // Edit notes:
 // 		(11-11-2017) Moved FEELER to pin 2, GPS_RX to pin 12
+// 		(11-19-2017) Moved ENCODER_FRONT_LEFT_INC to pin 3, MOTOR_MOISTURE_PWM to pin A2
 
 #ifndef H2ROVER_PINDECLARATIONS_H
 #define H2ROVER_PINDECLARATIONS_H
@@ -63,10 +64,11 @@ const int IMU_SDA = A4;
 const int IMU_SCL = A5;
 
 //Rack and Pinion Motor
-const int MOTOR_MOISTURE_PWM = 3;
+const int MOTOR_MOISTURE_PWM = A2;
 
 //Encoder
-const int ENCODER_FRONT_LEFT_INC = A2;
-const int ENCODER_FRONT_LEFT_DEC = A1;
+//pin 3 is interrupt
+const int ENCODER_FRONT_LEFT_INC = 3;
+//const int ENCODER_FRONT_LEFT_DEC = A1;
 
 #endif //H2ROVER_PINDECLARATIONS_H
