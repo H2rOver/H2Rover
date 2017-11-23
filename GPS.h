@@ -27,7 +27,7 @@ class GPS {
 	// dGPS (differential) quality 
 		void initialize(Adafruit_GPS* GPS_obj1);
 
-		void gpsRead(Adafruit_GPS* GPS_obj1);
+		int gpsRead(Adafruit_GPS* GPS_obj1);
  
 
 	private:
