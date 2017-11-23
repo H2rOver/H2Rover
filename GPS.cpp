@@ -49,8 +49,17 @@ int GPS::updateLocation()
 	return 0;
 }
 
-int GPS::getGPS(Adafruit_GPS *pop_gps)
+
+int GPS::getData(String *array)
 {
-	pop_gps = gps_obj;
+    array[0] = String(gps_obj.hour);
+    array[1] = String(gps_obj.minute);
+    array[2] = String(gps_obj.seconds);
+    array[3] = String(gps_obj.day);
+    array[4] = String(gps_obj.month);
+    array[5] = String(gps_obj.year);
+    array[6] = String(gps_obj.latitudeDegrees, 8);
+    array[7] = String(gps_obj.longitudeDegrees, 8);
+    return 0;
 }
 

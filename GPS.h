@@ -29,7 +29,7 @@ class GPS {
 
 		int updateLocation();
 
-		int getGPS(Adafruit_GPS* pop_gps);
+		int getData(String array[]);
  
 
 	private:
