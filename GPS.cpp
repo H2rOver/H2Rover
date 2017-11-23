@@ -10,6 +10,9 @@
 
 #include "GPS.h"
 
+SoftwareSerial soft(GPS_TX, GPS_RX);
+Adafruit_GPS gps_obj(&soft);
+
 // Constructor
 GPS::GPS() {
 
@@ -20,30 +23,34 @@ GPS::~GPS() {
 
 }
 
-void GPS::initialize(Adafruit_GPS* GPS_obj1) {
+void GPS::initialize() {
 
 	// Initialize GPS
-	GPS_obj1->begin(9600);
-	GPS_obj1->sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
-	GPS_obj1->sendCommand(PMTK_SET_NMEA_UPDATE_1HZ);
-	GPS_obj1->sendCommand(PGCMD_ANTENNA);
+	gps_obj.begin(9600);
+	gps_obj.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
+	gps_obj.sendCommand(PMTK_SET_NMEA_UPDATE_1HZ);
+	gps_obj.sendCommand(PGCMD_ANTENNA);
 	delay(1000);
 
-	while(GPS_obj1->fix == 0){
-		GPS_obj1->read();
-		if (GPS_obj1->newNMEAreceived()) {
-			if (!GPS_obj1->parse(GPS_obj1->lastNMEA())) return;
+	while(gps_obj.fix == 0){
+		gps_obj.read();
+		if (gps_obj.newNMEAreceived()) {
+			if (!gps_obj.parse(gps_obj.lastNMEA())) return;
 		}
 	}
 }
 
-int GPS::gpsRead(Adafruit_GPS* GPS_obj1)
+int GPS::updateLocation()
 {
-	GPS_obj1->read();
-	if (GPS_obj1->newNMEAreceived()) {
-		if (!GPS_obj1->parse(GPS_obj1->lastNMEA())) return 1;
+	gps_obj.read();
+	if (gps_obj.newNMEAreceived()) {
+		if (!gps_obj.parse(gps_obj.lastNMEA())) return 1;
 	}
 	return 0;
 }
 
+int GPS::getGPS(Adafruit_GPS *pop_gps)
+{
+	pop_gps = gps_obj;
+}
 

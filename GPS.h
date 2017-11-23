@@ -25,9 +25,11 @@ class GPS {
     
     // The GPS module must "warm up" for 30-40s on first boot to get a fix with
 	// dGPS (differential) quality 
-		void initialize(Adafruit_GPS* GPS_obj1);
+		void initialize();
 
-		int gpsRead(Adafruit_GPS* GPS_obj1);
+		int updateLocation();
+
+		int getGPS(Adafruit_GPS* pop_gps);
  
 
 	private:
