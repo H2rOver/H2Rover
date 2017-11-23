@@ -50,7 +50,7 @@ int GPS::updateLocation()
 }
 
 
-int GPS::getData(String *array)
+int GPS::getData(String* array)
 {
     array[0] = String(gps_obj.hour);
     array[1] = String(gps_obj.minute);

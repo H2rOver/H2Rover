@@ -29,7 +29,7 @@ class GPS {
 
 		int updateLocation();
 
-		int getData(String array[]);
+		int getData(String* array);
  
 
 	private:
