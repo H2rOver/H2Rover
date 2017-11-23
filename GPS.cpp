@@ -20,29 +20,20 @@ GPS::~GPS() {
 
 }
 
-void GPS::initialize(Adafruit_GPS* GPS_obj1, SoftwareSerial* softSerial) {
-
-	// Setup onboard Arduino Nano LED for fix confirmation
-	pinMode(LED_BUILTIN,OUTPUT);
-	digitalWrite(LED_BUILTIN,LOW);
+void GPS::initialize(Adafruit_GPS* GPS_obj1) {
 
 	// Initialize GPS
 	GPS_obj1->begin(9600);
-
-
 	GPS_obj1->sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
 	GPS_obj1->sendCommand(PMTK_SET_NMEA_UPDATE_1HZ);
 	GPS_obj1->sendCommand(PGCMD_ANTENNA);
 	delay(1000);
 
-	while(GPS_obj1->fix != 1){
-		char letter = GPS_obj1->read();
-
-			if (GPS_obj1->newNMEAreceived()) {
-		
-			if (!GPS_obj1->parse(GPS_obj1->lastNMEA()))   // this also sets the newNMEAreceived() flag to false
-				return;  // we can fail to parse a sentence in which case we should just wait for another
-			}
+	while(GPS_obj1->fix == 0){
+		GPS_obj1->read();
+		if (GPS_obj1->newNMEAreceived()) {
+			if (!GPS_obj1->parse(GPS_obj1->lastNMEA())) return;
+		}
 	}
 	Serial.println("GPS ready");
 }
