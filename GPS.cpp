@@ -35,24 +35,15 @@ void GPS::initialize(Adafruit_GPS* GPS_obj1) {
 			if (!GPS_obj1->parse(GPS_obj1->lastNMEA())) return;
 		}
 	}
-	Serial.println("GPS ready");
 }
 
-void GPS::gpsRead(Adafruit_GPS* GPS_obj1)
+int GPS::gpsRead(Adafruit_GPS* GPS_obj1)
 {
-	Serial.println("GPS");
-	Serial.println((int)GPS_obj1);
-	// if a sentence is received, we can check the checksum, parse it...
+	GPS_obj1->read();
 	if (GPS_obj1->newNMEAreceived()) {
-	
-	if (!GPS_obj1->parse(GPS_obj1->lastNMEA()))   // this also sets the newNMEAreceived() flag to false
-		return;  // we can fail to parse a sentence in which case we should just wait for another
+		if (!GPS_obj1->parse(GPS_obj1->lastNMEA())) return 1;
 	}
-	Serial.println(GPS_obj1->lastNMEA());
-	Serial.println("GPS Read fix: ");
-	Serial.println(GPS_obj1->fix);
-	Serial.println("GPS Fix Quality: ");
-	Serial.println(GPS_obj1->fixquality);
+	return 0;
 }
 
 
