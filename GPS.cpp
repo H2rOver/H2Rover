@@ -20,51 +20,60 @@ GPS::~GPS() {
 
 }
 
-void GPS::initialize(Adafruit_GPS *GPS_obj1, SoftwareSerial *softSerial) {
+void GPS::initialize(Adafruit_GPS* GPS_obj1, SoftwareSerial* softSerial) {
 
-    // Setup onboard Arduino Nano LED for fix confirmation
-    pinMode(LED_BUILTIN, OUTPUT);
-    digitalWrite(LED_BUILTIN, LOW);
+	// Setup onboard Arduino Nano LED for fix confirmation
+	pinMode(LED_BUILTIN,OUTPUT);
+	digitalWrite(LED_BUILTIN,LOW);
 
-    // Initialize GPS
-    // 9600 NMEA is the default baud rate for Adafruit MTK GPS
-
-    GPS_obj1->begin(9600);
+	// Initialize GPS
+	GPS_obj1->begin(9600);
 
 
-    GPS_obj1->sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
-    GPS_obj1->sendCommand(PMTK_SET_NMEA_UPDATE_1HZ);
-    GPS_obj1->sendCommand(PGCMD_ANTENNA);
-    delay(1000);
+	GPS_obj1->sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
+	GPS_obj1->sendCommand(PMTK_SET_NMEA_UPDATE_1HZ);
+	GPS_obj1->sendCommand(PGCMD_ANTENNA);
+	delay(1000);
 
-    while (GPS_obj1->fix != 1) {
-        GPS_obj1->read();
-        if (GPS_obj1->newNMEAreceived()) {
+	while(GPS_obj1->fix != 1){
+		Serial.println("GPS not ready");
+		char letter = GPS_obj1->read();
+		// if (letter = '0'){
+		// 	Serial.println("Software Serial Error");
+		// } else {
+		// 	if (!GPS_obj1->fix) {
+		// 	Serial.println("GPS fix: ");
+		// 	Serial.println(GPS_obj1->fix);
+		// 	}
 
-            if (!GPS_obj1->parse(GPS_obj1->lastNMEA()))   // this also sets the newNMEAreceived() flag to false
-                return;  // we can fail to parse a sentence in which case we should just wait for another
-        }
+			if (GPS_obj1->newNMEAreceived()) {
+		
+			if (!GPS_obj1->parse(GPS_obj1->lastNMEA()))   // this also sets the newNMEAreceived() flag to false
+				return;  // we can fail to parse a sentence in which case we should just wait for another
+			}
+			Serial.println(GPS_obj1->newNMEAreceived());
+			delay(2000);
+		//}
 
-        //}
-
-    }
-    Serial.println("GPS ready");
+	}
+	Serial.println("GPS ready");
 }
 
-void GPS::gpsRead(Adafruit_GPS *GPS_obj1) {
-    Serial.println("GPS");
-    Serial.println((int) GPS_obj1);
-    // if a sentence is received, we can check the checksum, parse it...
-    if (GPS_obj1->newNMEAreceived()) {
-
-        if (!GPS_obj1->parse(GPS_obj1->lastNMEA()))   // this also sets the newNMEAreceived() flag to false
-            return;  // we can fail to parse a sentence in which case we should just wait for another
-    }
-    Serial.println(GPS_obj1->lastNMEA());
-    Serial.println("GPS Read fix: ");
-    Serial.println(GPS_obj1->fix);
-    Serial.println("GPS Fix Quality: ");
-    Serial.println(GPS_obj1->fixquality);
+void GPS::gpsRead(Adafruit_GPS* GPS_obj1)
+{
+	Serial.println("GPS");
+	Serial.println((int)GPS_obj1);
+	// if a sentence is received, we can check the checksum, parse it...
+	if (GPS_obj1->newNMEAreceived()) {
+	
+	if (!GPS_obj1->parse(GPS_obj1->lastNMEA()))   // this also sets the newNMEAreceived() flag to false
+		return;  // we can fail to parse a sentence in which case we should just wait for another
+	}
+	Serial.println(GPS_obj1->lastNMEA());
+	Serial.println("GPS Read fix: ");
+	Serial.println(GPS_obj1->fix);
+	Serial.println("GPS Fix Quality: ");
+	Serial.println(GPS_obj1->fixquality);
 }
 
 
