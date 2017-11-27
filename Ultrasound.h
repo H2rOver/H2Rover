@@ -6,6 +6,7 @@
 #define H2ROVER_ULTRASOUND_H
 
 #include <PinDeclarations.h>
+#include <Adafruit_Sensor.h>
 
 //This class aims to simplify the usage of the Ultrasound module HC-SR04
 //It returns values only in cm
