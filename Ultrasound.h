@@ -18,7 +18,7 @@ public:
 
     void initialize(uint8_t sensorId);
 
-    uint16_t getDistance();
+    uint32_t getDistance(uint8_t sampleCount);
 
     void getSensor(sensor_t* sensor);
 

@@ -14,15 +14,23 @@ void Ultrasound::initialize(uint8_t sensorId) {
     pinMode(ULTRASOUND_ECHO, INPUT);
 }
 
-uint16_t Ultrasound::getDistance() {
-    uint16_t duration;
-    digitalWrite(ULTRASOUND_TRIGGER, LOW);
-    delayMicroseconds(2);
-    digitalWrite(ULTRASOUND_TRIGGER, HIGH);
-    delayMicroseconds(10);
-    digitalWrite(ULTRASOUND_TRIGGER, LOW);
-    duration = pulseIn(ULTRASOUND_ECHO, HIGH);
-    return (duration/2) / 29.1;
+uint32_t Ultrasound::getDistance(uint8_t sampleCount) {
+    uint32_t duration = 0;
+	for(int i = 0; i < sampleCount; i++){
+		digitalWrite(ULTRASOUND_TRIGGER, LOW);
+		delayMicroseconds(2);
+		digitalWrite(ULTRASOUND_TRIGGER, HIGH);
+		delayMicroseconds(10);
+		digitalWrite(ULTRASOUND_TRIGGER, LOW);
+		uint16_t temp = pulseIn(ULTRASOUND_ECHO, HIGH);
+		temp = (temp/2) / 29.1;
+		if (duration <= 200) {
+			duration += temp;
+		} else {
+			duration += 200;
+		}
+	}
+    return duration / sampleCount;
 }
 
 void Ultrasound::getSensor(sensor_t *sensor) {
@@ -31,8 +39,8 @@ void Ultrasound::getSensor(sensor_t *sensor) {
     sensor->version = 1;
     sensor->sensor_id =this->sensorId;
     sensor->type = SENSOR_TYPE_PROXIMITY;
-    sensor->min_delay = 12; //12 microseconds between readings
-    sensor->max_value = 1035; //1035cm is the highest recorded value
+    sensor->min_delay = 65; //65 microseconds between readings
+    sensor->max_value = 400; //400cm is the highest recorded value
     sensor->resolution = 1; //smallest difference in measurements is 1cm
 }
 
