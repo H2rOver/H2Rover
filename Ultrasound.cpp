@@ -10,26 +10,35 @@ Ultrasound::~Ultrasound() {}
 
 void Ultrasound::initialize(uint8_t sensorId) {
     this->sensorId = sensorId;
+    //Trigger activates the ultrasonic unit
     pinMode(ULTRASOUND_TRIGGER, OUTPUT);
+    //echo acknowledges the reflections
     pinMode(ULTRASOUND_ECHO, INPUT);
 }
 
 uint32_t Ultrasound::getDistance(uint8_t sampleCount) {
     uint32_t duration = 0;
 	for(int i = 0; i < sampleCount; i++){
+        //Clear the area of noise
 		digitalWrite(ULTRASOUND_TRIGGER, LOW);
 		delayMicroseconds(2);
+        //Enable trigger to populate local area with sound
 		digitalWrite(ULTRASOUND_TRIGGER, HIGH);
 		delayMicroseconds(10);
+        //Deactivate emitter
 		digitalWrite(ULTRASOUND_TRIGGER, LOW);
+        //Read in values
 		uint16_t temp = pulseIn(ULTRASOUND_ECHO, HIGH);
-		temp = (temp/2) / 29.1;
+		//Formula based on the speed of sound at air level and time gone by
+        temp = (temp/2) / 29.1;
+        //clip values greater than 200cm to prevent false reading and distance spikes
 		if (duration <= 200) {
 			duration += temp;
 		} else {
 			duration += 200;
 		}
 	}
+    //return the average
     return duration / sampleCount;
 }
 
