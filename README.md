@@ -20,6 +20,7 @@ The purpose of this library is to ease access to the various components of the H
   3. Ensure the following libraries are installed:
      - Adafruit Unified Sensor 
      - Adafruit BNO055
+     - Adafruit GPS Library
      - Xbee
 
 ## Cloning the Repository
