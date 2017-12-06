@@ -13,6 +13,8 @@ public:
     void motorBackward(int speed);
     void motorRight(int speed);
     void motorLeft(int speed);
+    void probeDown(int speed);
+    void probeUp(int speed);
 };
 
 #endif

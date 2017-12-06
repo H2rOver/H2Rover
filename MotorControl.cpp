@@ -1,14 +1,15 @@
 //
 // Created by: Daniel Benusovich
 // Created on: 10/25/2017
-// Last edited By: Scott Timpe
-// Last edited bn: 11/11/2017
+// Last edited By: Jonathan Midolo
+// Last edited on: 12/5/2017
 //
 // Edit notes:
 //	(11-11-2017) Added forwardRight and forwardLeft methods
 //				 There must be something i am not understanding about how the motors work
 //				 because they are not working as intended. Why are there low pins in motorForward()?
 //				 Shouldn't they all be high?
+//  (12-5-2017) Added probe motor function
 
 #include "MotorControl.h"
 
@@ -19,6 +20,7 @@ MotorControl::MotorControl() {
     pinMode(MOTOR_ENABLE_LEFT_BACK, OUTPUT);
     pinMode(MOTOR_ENABLE_RIGHT_FRONT, OUTPUT);
     pinMode(MOTOR_ENABLE_RIGHT_BACK, OUTPUT);
+    pinMode(MOTOR_MOISTURE_PWM, OUTPUT);
 }
 
 void MotorControl::motorOff() {
@@ -105,4 +107,20 @@ void MotorControl::motorRight(int speed) {
     digitalWrite(MOTOR_ENABLE_RIGHT_BACK, HIGH);
     // set pwm to 'speed' out of possible range 0~255
     analogWrite(MOTOR_SPEED_RIGHT, speed);
+}
+
+void MotorControl::probeDown(int speed) {
+    // turn on motor side Right -- shared pins for probe motor
+    digitalWrite(MOTOR_ENABLE_RIGHT_FRONT, HIGH);
+    digitalWrite(MOTOR_ENABLE_RIGHT_BACK, LOW);
+    // set pwm to 'speed' out of possible range 0~255
+    analogWrite(MOTOR_MOISTURE_PWM, speed);
+}
+
+void MotorControl::probeUp(int speed) {
+    // turn on motor side Right -- shared pins for probe motor
+    digitalWrite(MOTOR_ENABLE_RIGHT_FRONT, LOW);
+    digitalWrite(MOTOR_ENABLE_RIGHT_BACK, HIGH);
+    // set pwm to 'speed' out of possible range 0~255
+    analogWrite(MOTOR_MOISTURE_PWM, speed);
 }
