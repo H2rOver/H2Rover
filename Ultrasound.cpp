@@ -20,12 +20,8 @@ void Ultrasound::initialize(uint8_t sensorId) {
 
 uint32_t Ultrasound::getDistance(uint8_t sampleCount) {
     uint32_t duration = 0;
-<<<<<<< HEAD
-	for(int i = 0; i < sampleCount + 5; i++){
-=======
 	for(int i = 0; i < sampleCount; i++){
         //Clear the area of noise
->>>>>>> f9324a30063433f7cfeca5cc9b4c37e3e1b3ff6e
 		digitalWrite(ULTRASOUND_TRIGGER, LOW);
 		delayMicroseconds(2);
         //Enable trigger to populate local area with sound
@@ -35,27 +31,6 @@ uint32_t Ultrasound::getDistance(uint8_t sampleCount) {
 		digitalWrite(ULTRASOUND_TRIGGER, LOW);
         //Read in values
 		uint16_t temp = pulseIn(ULTRASOUND_ECHO, HIGH);
-<<<<<<< HEAD
-		temp = (temp/2) / 29.1;
-		//Toss the first 5 samples. They are often inaccurate
-		if (i > 4) {
-			Serial.println(temp);
-			if (temp <= 400) {
-				duration += temp;
-			} else {
-				duration += 400;
-			}
-		}
-		//Delay for 60 milliseconds to prevent overlap
-		unsigned long timeStart = millis();
-		while (millis() - timeStart < 60){
-			
-		}
-	}
-	Serial.println("Result");
-	Serial.println(duration / (sampleCount));
-    return (duration / (sampleCount));
-=======
 		//Formula based on the speed of sound at air level and time gone by
         temp = (temp/2) / 29.1;
         //clip values greater than 200cm to prevent false reading and distance spikes
@@ -67,7 +42,6 @@ uint32_t Ultrasound::getDistance(uint8_t sampleCount) {
 	}
     //return the average
     return duration / sampleCount;
->>>>>>> f9324a30063433f7cfeca5cc9b4c37e3e1b3ff6e
 }
 
 void Ultrasound::getSensor(sensor_t *sensor) {
