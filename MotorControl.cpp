@@ -32,6 +32,12 @@ void MotorControl::motorOff() {
     analogWrite(MOTOR_SPEED_LEFT, 0);
 }
 
+void MotorControl::probeOff() {
+    digitalWrite(MOTOR_ENABLE_RIGHT_FRONT, LOW);
+    digitalWrite(MOTOR_ENABLE_RIGHT_BACK, LOW);
+    analogWrite(MOTOR_MOISTURE_PWM, 0);
+}
+
 void MotorControl::motorForward(int speed) {
     // turn on motor side A
     digitalWrite(MOTOR_ENABLE_LEFT_FRONT, HIGH);

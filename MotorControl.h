@@ -7,6 +7,7 @@ class MotorControl {
 public:
     MotorControl();
     void motorOff();
+    void probeOff();
     void motorForward(int speed);
 	void motorForwardRight(int speed);
 	void motorForwardLeft(int speed);
