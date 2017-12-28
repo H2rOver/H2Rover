@@ -56,10 +56,10 @@ uint32_t Ultrasound::getDistance(uint8_t sampleCount) {
 
 void Ultrasound::getSensor(sensor_t *sensor) {
     memset(sensor, 0, sizeof(sensor_t));
-    strncpy(sensor->name, "HC-SR04", sizeof(sensor->name) - 1);
+    strncpy(sensor->name, "HD-38", sizeof(sensor->name) - 1);
     sensor->version = 1;
     sensor->sensor_id =this->sensorId;
-    sensor->type = SENSOR_TYPE_PROXIMITY;
+    sensor->type = SENSOR_TYPE_VOLTAGE;
     sensor->min_delay = 65; //65 microseconds between readings
     sensor->max_value = 400; //400cm is the highest recorded value
     sensor->resolution = 1; //smallest difference in measurements is 1cm

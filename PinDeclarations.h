@@ -36,7 +36,7 @@ const int FEELER = 2;
 //Moisture Sensor
 //We combine Voltage_pin and motor_direction for the rack and pinion motor due to a lack of pins
 //We may combine the pins because the moisture sensor will only be on when we lower the motor
-const int MOISTURE_INPUT = A7;//Nano
+const int MOISTURE_INPUT = A6;//Nano
 
 //Proximity Sensor
 const int ULTRASOUND_TRIGGER = 11;
@@ -47,7 +47,7 @@ const int XBEE_TX = 1; //TX
 const int XBEE_RX = 0; //RX
 
 //Water Sensor
-const int WATER_INPUT = A6;//Nano
+const int WATER_INPUT = A7;//Nano
 
 //Battery Voltage
 const int BATTERY_VOLTAGE = A3;//Nano
