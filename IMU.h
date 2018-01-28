@@ -12,8 +12,8 @@
 
 #include "PinDeclarations.h"
 #include "MotorControl.h"
-#include <Adafruit_Sensor.h>
-#include <Adafruit_BNO055.h>	//need to install "Adafruit BNO055" library on arduino IDE
+#include <Adafruit_Sensor.h>	//need to install "Adafruit Unified Sensor" library on Arduino IDE
+#include <Adafruit_BNO055.h>	//need to install "Adafruit BNO055" library on Arduino IDE
 
 
 //This sensor follows the Adafruit Unified Sensor Library Conventions
