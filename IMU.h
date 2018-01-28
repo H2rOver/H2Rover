@@ -30,7 +30,7 @@ public:
        The code will attempt to auto calibrate the sensor by using the MotorControl class to
        move the vehicle. The movement will stop once the IMU is calibrated
      */
-    void initialize(int id);
+    void initialize(int id, uint8_t motorSpeed);
 
     void getSensor(sensor_t* sensor);
 

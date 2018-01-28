@@ -20,7 +20,7 @@ void IMU::getSensor(sensor_t* sensor) {
     this->bno.getSensor(sensor);
 }
 
-void IMU::initialize(int id) {
+void IMU::initialize(int id, uint8_t motorSpeed) {
 	uint8_t system, gyro, accel, mag;
 	
     //Initialize IMU with id number
@@ -43,7 +43,7 @@ void IMU::initialize(int id) {
     Serial.println("Please move the sensor slightly");
 	do {
       this->bno.getCalibration(&system, &gyro, &accel, &mag);
-	  temp.motorRight(150);
+	  temp.motorRight(motorSpeed);
       delay(800);
       temp.motorOff();
       delay(800);/*
