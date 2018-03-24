@@ -11,7 +11,7 @@
 #ifndef H2ROVER_PINDECLARATIONS_H
 #define H2ROVER_PINDECLARATIONS_H
 
-//Import to allow arduino commands 
+//Import to allow arduino commands
 #include <Arduino.h>
 
 
@@ -60,8 +60,8 @@ const int GPS_RX = 12;
 const int GPS_TX = 13;
 
 //IMU
-const int IMU_SDA = A4;
-const int IMU_SCL = A5;
+const int IMU_SDA = 20; //A4 Nano 20 MEGA - Jon
+const int IMU_SCL = 21; //A5 Nano 21 MEGA - Jon
 
 //Rack and Pinion Motor
 const int MOTOR_MOISTURE_PWM = A2;

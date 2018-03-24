@@ -57,6 +57,7 @@ int GPS::getData(String* array)
 {
 	// Infinite loop until data array of strings populates
 	while(1){
+
 		updateLocation();
 
 		if (timer > millis())  timer = millis();
@@ -72,6 +73,8 @@ int GPS::getData(String* array)
 			    array[5] = String(gps_obj.year);
 			    array[6] = String(gps_obj.latitudeDegrees, 10);
 			    array[7] = String(gps_obj.longitudeDegrees, 10);
+					array[8] = String(gps_obj.fixquality);
+
 			    return 0;
 		}
 	}
